@@ -1,25 +1,24 @@
-
-import { useEffect, useState } from 'react';
 import './App.css';
 import Axios from 'axios';
+import { useEffect, useState } from 'react';
+
 
 function App() {
-const [url, SetUrl] = useState("")
+  const [url, SetUrl] = useState("");
 
-useEffect(() => {
-  Axios.get("https://aws.random.cat/meow").then((url) => {
-    SetUrl(url.data["file"])
-  })
-},[])
-
+  useEffect(() => {
+    Axios.get("http://aws.random.cat/meow").then((value) => {
+      SetUrl(value.data["file"]);
+    })
+  }, [])
+   
   return (
     <div className="App">
-    {
-      url !== ""  &&(
-        <img src ={ url} alt="cat"/> 
-      )
-    }
-      
+      {
+        url !== "" && (
+          <img src={url} alt="cat" />
+        )
+      }
     </div>
   );
 }
